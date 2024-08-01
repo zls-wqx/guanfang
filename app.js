@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const clockLink = document.getElementById('clockLink');
     const stopwatchLink = document.getElementById('stopwatchLink');
     const musicLink = document.getElementById('musicLink');
-    const newsLink = document.getElementById('newsLink'); // 新增新闻链接
+    const newsLink = document.getElementById('newsLink');
     const aboutLink = document.getElementById('aboutLink');
     const contentSections = document.querySelectorAll('main section');
 
@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', function() {
     clockLink.addEventListener('click', () => showSection('clock'));
     stopwatchLink.addEventListener('click', () => showSection('stopwatch'));
     musicLink.addEventListener('click', () => showSection('music'));
-    newsLink.addEventListener('click', () => showSection('news')); // 处理新闻链接
-    aboutLink.addEventListener('click', () => showSection('about'));
+    newsLink.addEventListener('click', () => showSection('news'));
+    aboutLink.addEventListener('click', () => showSection('about')); // 新增关于链接
 
     showSection('home'); // 默认显示主页
 
@@ -134,8 +134,27 @@ document.addEventListener('DOMContentLoaded', function() {
         audioPlayer.src = url;
         audioPlayer.play();
     }
-});
 
-    audioPlayer.src = url;
-    audioPlayer.play();
-}
+    // 新闻功能
+    function fetchNews() {
+        const url = 'https://api.example.com/news'; // 替换为实际的新闻 API 地址
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const newsSection = document.getElementById('newsSection');
+                newsSection.innerHTML = '';
+
+                data.articles.forEach(article => {
+                    const newsItem = document.createElement('div');
+                    newsItem.classList.add('news-item');
+                    newsItem.innerHTML = `<h3>${article.title}</h3><p>${article.description}</p>`;
+                    newsSection.appendChild(newsItem);
+                });
+            })
+            .catch(error => {
+                console.error('获取新闻失败:', error);
+            });
+    }
+
+    fetchNews();
+});
