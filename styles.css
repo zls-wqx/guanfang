@@ -184,6 +184,28 @@ footer {
     background-color: #002d59;
 }
 
+/* 新增新闻部分样式 */
+.news-section {
+    background-color: #ffffff;
+    border: 1px solid #004080;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    margin-bottom: 2rem;
+}
+
+.news-item {
+    margin-bottom: 1rem;
+}
+
+.news-item h3 {
+    margin: 0 0 0.5rem;
+}
+
+.news-item p {
+    margin: 0;
+}
+
 @media (max-width: 768px) {
     nav ul li {
         display: block;
