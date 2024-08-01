@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音乐 - X-GORB官方网站</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="music.js" defer></script>
+</head>
+<body>
+    <main id="content">
+        <section id="music" class="visible">
+            <h2>音乐播放器</h2>
+            <div class="music-controls">
+                <input type="text" id="searchInput" placeholder="搜索音乐...">
+                <button id="searchButton" class="btn">搜索</button>
+            </div>
+            <div id="musicList" class="music-list"></div>
+            <div id="player" class="music-player">
+                <audio id="audioPlayer" controls></audio>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
