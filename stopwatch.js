@@ -1,37 +1,44 @@
-document.addEventListener('DOMContentLoaded', function() {
-    let stopwatchInterval;
-    let stopwatchTime = 0;
+document.addEventListener('DOMContentLoaded', () => {
+    const display = document.getElementById('stopwatchDisplay');
+    const startButton = document.getElementById('startStopwatch');
+    const stopButton = document.getElementById('stopStopwatch');
+    const resetButton = document.getElementById('resetStopwatch');
 
-    const stopwatchDisplay = document.getElementById('stopwatchDisplay');
-    const startStopwatchButton = document.getElementById('startStopwatch');
-    const stopStopwatchButton = document.getElementById('stopStopwatch');
-    const resetStopwatchButton = document.getElementById('resetStopwatch');
+    let startTime, updatedTime, difference, tInterval, running = false;
 
-    function updateStopwatchDisplay() {
-        const hours = String(Math.floor(stopwatchTime / 3600)).padStart(2, '0');
-        const minutes = String(Math.floor((stopwatchTime % 3600) / 60)).padStart(2, '0');
-        const seconds = String(stopwatchTime % 60).padStart(2, '0');
-        stopwatchDisplay.textContent = `${hours}:${minutes}:${seconds}`;
+    function startTimer() {
+        if (!running) {
+            startTime = new Date().getTime();
+            tInterval = setInterval(updateTime, 1);
+            running = true;
+        }
     }
 
-    startStopwatchButton.addEventListener('click', () => {
-        if (!stopwatchInterval) {
-            stopwatchInterval = setInterval(() => {
-                stopwatchTime += 1;
-                updateStopwatchDisplay();
-            }, 1000);
-        }
-    });
+    function stopTimer() {
+        clearInterval(tInterval);
+        running = false;
+    }
 
-    stopStopwatchButton.addEventListener('click', () => {
-        clearInterval(stopwatchInterval);
-        stopwatchInterval = null;
-    });
+    function resetTimer() {
+        clearInterval(tInterval);
+        display.textContent = '00:00:00';
+        running = false;
+    }
 
-    resetStopwatchButton.addEventListener('click', () => {
-        stopwatchTime = 0;
-        updateStopwatchDisplay();
-    });
+    function updateTime() {
+        updatedTime = new Date().getTime();
+        difference = updatedTime - startTime;
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+        display.textContent = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+    }
 
-    updateStopwatchDisplay();
+    function pad(num) {
+        return num < 10 ? '0' + num : num;
+    }
+
+    startButton.addEventListener('click', startTimer);
+    stopButton.addEventListener('click', stopTimer);
+    resetButton.addEventListener('click', resetTimer);
 });
