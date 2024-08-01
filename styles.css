@@ -184,16 +184,30 @@ footer {
     background-color: #002d59;
 }
 
-.news-section {
-    padding: 1rem;
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
 }
 
-.news-item {
-    background-color: #ffffff;
-    border: 1px solid #004080;
-    padding: 0.5rem;
+.pagination button {
+    background-color: #004080;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
     border-radius: 4px;
-    margin-bottom: 0.5rem;
+    cursor: pointer;
+    margin: 0 0.5rem;
+}
+
+.pagination button:hover {
+    background-color: #002d59;
+}
+
+.pagination #pageInfo {
+    font-size: 1rem;
+    margin: 0 0.5rem;
 }
 
 @media (max-width: 768px) {
