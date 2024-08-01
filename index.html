@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>X-GORB官方网站 - 音乐、时钟</title>
+    <title>X-GORB官方网站 - 音乐、时钟、新闻</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -15,8 +15,8 @@
                 <li><a href="#" id="clockLink">时钟</a></li>
                 <li><a href="#" id="stopwatchLink">秒表</a></li>
                 <li><a href="#" id="musicLink">音乐</a></li>
-                <li><a href="#" id="newsLink">新闻</a></li> <!-- 新增新闻链接 -->
-                <li><a href="#" id="aboutLink">关于</a></li> <!-- 新增关于链接 -->
+                <li><a href="#" id="newsLink">新闻</a></li>
+                <li><a href="#" id="aboutLink">关于</a></li>
             </ul>
         </nav>
     </header>
@@ -25,7 +25,7 @@
             <h2>欢迎使用X-GORB 官方网站</h2>
             <p>这是一个由X-GORB工作室开发的网站。</p>
             <p>版权归X-GORB工作室所有。</p>
-            <p>我们的服务包括免费音乐、免费秒表和免费时钟（注：还有新功能哦！）</p>
+            <p>我们的服务是免费音乐，免费秒表，免费时钟（注：还有新功能哦！）</p>
             <div class="recommended-sites">
                 <h3>推荐网站</h3>
                 <button onclick="window.open('https://www.douyin.com', '_blank')">抖音</button>
@@ -62,8 +62,11 @@
         </section>
         <section id="news" class="hidden">
             <h2>新闻</h2>
-            <div class="news-section" id="newsSection">
-                <!-- 新闻项将由JavaScript动态生成 -->
+            <div id="newsSection" class="news-section"></div>
+            <div class="pagination">
+                <button id="prevPage" class="btn">上一页</button>
+                <span id="pageInfo">第 1 页</span>
+                <button id="nextPage" class="btn">下一页</button>
             </div>
         </section>
         <section id="about" class="hidden">
