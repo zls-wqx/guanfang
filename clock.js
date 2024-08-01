@@ -1,28 +1,24 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const clockDisplay = document.getElementById('clockDisplay');
+document.addEventListener('DOMContentLoaded', () => {
+    const digitalClock = document.getElementById('digitalClock');
     const timezoneSelect = document.getElementById('timezoneSelect');
-    
+
     function updateClock() {
         const now = new Date();
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        const seconds = String(now.getSeconds()).padStart(2, '0');
-        clockDisplay.textContent = `${hours}:${minutes}:${seconds}`;
+        const options = { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: timezoneSelect.value };
+        digitalClock.textContent = now.toLocaleTimeString([], options);
     }
 
     function populateTimezones() {
-        const timezones = [
-            'UTC', 'GMT', 'America/New_York', 'America/Chicago', 'America/Denver', 'America/Los_Angeles',
-            'Europe/London', 'Europe/Paris', 'Asia/Tokyo', 'Australia/Sydney'
-        ];
-        timezones.forEach(zone => {
+        const timezones = Intl.supportedValuesOf('timeZone');
+        timezones.forEach(tz => {
             const option = document.createElement('option');
-            option.value = zone;
-            option.textContent = zone;
+            option.value = tz;
+            option.textContent = tz;
             timezoneSelect.appendChild(option);
         });
     }
 
+    timezoneSelect.addEventListener('change', updateClock);
     populateTimezones();
     updateClock();
     setInterval(updateClock, 1000);
