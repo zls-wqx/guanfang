@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X-GORB官方网站 - 音乐、时钟</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>X-GORB 官方网站</h1>
+        <nav>
+            <ul>
+                <li><a href="#" id="homeLink">主页</a></li>
+                <li><a href="#" id="clockLink">时钟</a></li>
+                <li><a href="#" id="stopwatchLink">秒表</a></li>
+                <li><a href="#" id="musicLink">音乐</a></li>
+                <li><a href="#" id="aboutLink">关于</a></li> <!-- 新增关于链接 -->
+            </ul>
+        </nav>
+    </header>
+    <main id="content">
+        <section id="home" class="visible">
+            <h2>欢迎使用X-GORB 官方网站</h2>
+            <p>这是一个由X-GORB工作室开发的网站。</p>
+            <p>版权归X-GORB工作室所有。</p>
+            <p>我们的服务是免费音乐，免费秒表，免费时钟（注：还有新功能哦！）</p>
+            <div class="recommended-sites">
+                <h3>推荐网站</h3>
+                <button onclick="window.open('https://www.douyin.com', '_blank')">抖音</button>
+                <button onclick="window.open('https://www.ixigua.com', '_blank')">西瓜视频</button>
+            <p></p>
+            </div>
+        </section>
+        <section id="clock" class="hidden">
+            <h2>数字时钟</h2>
+            <div id="digitalClock" class="clock-display"></div>
+            <h3>选择时区</h3>
+            <select id="timezoneSelect" class="timezone-select">
+                <!-- 时区选项将由JavaScript动态生成 -->
+            </select>
+        </section>
+        <section id="stopwatch" class="hidden">
+            <h2>秒表</h2>
+            <div id="stopwatchDisplay" class="clock-display">00:00:00</div>
+            <div class="stopwatch-buttons">
+                <button id="startStopwatch" class="btn">开始</button>
+                <button id="stopStopwatch" class="btn">停止</button>
+                <button id="resetStopwatch" class="btn">重置</button>
+            </div>
+        </section>
+        <section id="music" class="hidden">
+            <h2>音乐播放器</h2>
+            <div class="music-controls">
+                <input type="text" id="searchInput" placeholder="搜索音乐...">
+                <button id="searchButton" class="btn">搜索</button>
+            </div>
+            <div id="musicList" class="music-list"></div>
+            <div id="player" class="music-player">
+                <audio id="audioPlayer" controls></audio>
+            </div>
+        </section>
+        <section id="about" class="hidden">
+            <h2>关于我们</h2>
+            <p>网站版本：6.4</p>
+            <div class="about-links">
+                <button onclick="window.open('https://space.bilibili.com/3493287799294517?spm_id_from=333.1007.0.0', '_blank')">我的主页 bilibili</button>
+                <button onclick="window.open('https://www.ixigua.com/home/4268765969648676?list_entrance=homepage', '_blank')">西瓜视频</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>©2024 -X-GORB工作室版权所有 · Copyright © 2024 X-GORB. All rights reserved.</p>
+        <p>京ICP备09042378号-6 · 京公网安备11010802022657号 · 增值电信业务经营许可证: 合字B2-20090007</p>
+        <p>不就是打输了，别这么垂头丧气。我们是妖精的尾巴，永不停歇的公会。只要活着就要勇往直前的奔跑去。</p>
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>
