@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     stopwatchLink.addEventListener('click', () => showSection('stopwatch'));
     musicLink.addEventListener('click', () => showSection('music'));
     newsLink.addEventListener('click', () => showSection('news'));
-    aboutLink.addEventListener('click', () => showSection('about')); // 新增关于链接
+    aboutLink.addEventListener('click', () => showSection('about'));
 
     showSection('home'); // 默认显示主页
 
@@ -47,7 +47,6 @@ document.addEventListener('DOMContentLoaded', function() {
             'Asia/Tokyo',
             'Europe/London',
             'America/New_York'
-            // 可以添加更多时区
         ];
         timezones.forEach(timezone => {
             const option = document.createElement('option');
@@ -136,8 +135,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // 新闻功能
-    function fetchNews() {
-        const url = 'https://api.example.com/news'; // 替换为实际的新闻 API 地址
+    let currentPage = 1;
+    const newsPerPage = 5;
+
+    function fetchNews(page = 1) {
+        const url = `https://api.example.com/news?page=${page}&pageSize=${newsPerPage}`; // 替换为实际的新闻 API 地址
         fetch(url)
             .then(response => response.json())
             .then(data => {
@@ -150,11 +152,25 @@ document.addEventListener('DOMContentLoaded', function() {
                     newsItem.innerHTML = `<h3>${article.title}</h3><p>${article.description}</p>`;
                     newsSection.appendChild(newsItem);
                 });
+
+                document.getElementById('pageInfo').textContent = `第 ${currentPage} 页`;
+                document.getElementById('prevPage').disabled = currentPage === 1;
+                document.getElementById('nextPage').disabled = !data.hasMore;
             })
-            .catch(error => {
-                console.error('获取新闻失败:', error);
-            });
+            .catch(error => console.error('新闻加载失败:', error));
     }
 
-    fetchNews();
+    document.getElementById('prevPage').addEventListener('click', () => {
+        if (currentPage > 1) {
+            currentPage -= 1;
+            fetchNews(currentPage);
+        }
+    });
+
+    document.getElementById('nextPage').addEventListener('click', () => {
+        currentPage += 1;
+        fetchNews(currentPage);
+    });
+
+    fetchNews(currentPage);
 });
