@@ -15,6 +15,7 @@
                 <li><a href="#" id="clockLink">时钟</a></li>
                 <li><a href="#" id="stopwatchLink">秒表</a></li>
                 <li><a href="#" id="musicLink">音乐</a></li>
+                <li><a href="#" id="newsLink">新闻</a></li> <!-- 新增新闻链接 -->
                 <li><a href="#" id="aboutLink">关于</a></li> <!-- 新增关于链接 -->
             </ul>
         </nav>
@@ -24,12 +25,11 @@
             <h2>欢迎使用X-GORB 官方网站</h2>
             <p>这是一个由X-GORB工作室开发的网站。</p>
             <p>版权归X-GORB工作室所有。</p>
-            <p>我们的服务是免费音乐，免费秒表，免费时钟（注：还有新功能哦！）</p>
+            <p>我们的服务包括免费音乐、免费秒表和免费时钟（注：还有新功能哦！）</p>
             <div class="recommended-sites">
                 <h3>推荐网站</h3>
                 <button onclick="window.open('https://www.douyin.com', '_blank')">抖音</button>
                 <button onclick="window.open('https://www.ixigua.com', '_blank')">西瓜视频</button>
-            <p></p>
             </div>
         </section>
         <section id="clock" class="hidden">
@@ -58,6 +58,20 @@
             <div id="musicList" class="music-list"></div>
             <div id="player" class="music-player">
                 <audio id="audioPlayer" controls></audio>
+            </div>
+        </section>
+        <section id="news" class="hidden">
+            <h2>新闻</h2>
+            <div class="news-section">
+                <div class="news-item">
+                    <h3>新闻标题 1</h3>
+                    <p>新闻内容 1</p>
+                </div>
+                <div class="news-item">
+                    <h3>新闻标题 2</h3>
+                    <p>新闻内容 2</p>
+                </div>
+                <!-- 你可以添加更多新闻项 -->
             </div>
         </section>
         <section id="about" class="hidden">
