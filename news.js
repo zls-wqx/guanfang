@@ -1,16 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
     // 新闻功能
     if (document.getElementById('newsContainer')) {
-        fetch('https://api.currentsapi.services/v1/latest-news?apiKey=YOUR_API_KEY')
+        const apiKey = 'YOUR_TOUTIAO_API_KEY';
+        const apiUrl = `https://api.toutiaoapi.com/news/?apikey=${apiKey}&category=news`;
+
+        fetch(apiUrl)
             .then(response => response.json())
             .then(data => {
                 const newsContainer = document.getElementById('newsContainer');
-                data.news.forEach(newsItem => {
+                data.data.forEach(newsItem => {
                     const newsElement = document.createElement('div');
                     newsElement.classList.add('news-item');
                     newsElement.innerHTML = `
                         <h3>${newsItem.title}</h3>
-                        <p>${newsItem.description}</p>
+                        <p>${newsItem.abstract}</p>
                         <a href="${newsItem.url}" target="_blank">阅读更多</a>
                     `;
                     newsContainer.appendChild(newsElement);
