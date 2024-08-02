@@ -1,26 +1,37 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const searchInput = document.getElementById('searchInput');
-    const searchButton = document.getElementById('searchButton');
-    const musicList = document.getElementById('musicList');
-    const audioPlayer = document.getElementById('audioPlayer');
+  if (document.getElementById('musicList')) {
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+        const musicList = document.getElementById('musicList');
+        const audioPlayer = document.getElementById('audioPlayer');
 
-    function searchMusic() {
-        const query = searchInput.value;
-        // 这里可以添加搜索音乐的实际逻辑
-        // 示例代码: 显示搜索结果
-        musicList.innerHTML = `
-            <div class="song-item">歌曲1</div>
-            <div class="song-item">歌曲2</div>
-            <div class="song-item">歌曲3</div>
-        `;
-    }
+        searchButton.addEventListener('click', () => {
+            const query = searchInput.value;
+            searchMusic(query);
+        });
 
-    searchButton.addEventListener('click', searchMusic);
-    
-    musicList.addEventListener('click', event => {
-        if (event.target.classList.contains('song-item')) {
-            audioPlayer.src = 'path/to/song.mp3'; // 示例歌曲路径
+        function searchMusic(query) {
+            const url = `https://api.lolimi.cn/API/yiny/?word=${encodeURIComponent(query)}&n=1`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    musicList.innerHTML = '';
+                    data.data.forEach(track => {
+                        const songItem = document.createElement('div');
+                        songItem.classList.add('song-item');
+                        songItem.textContent = `${track.title} - ${track.author}`;
+                        songItem.addEventListener('click', () => playMusic(track.url));
+                        musicList.appendChild(songItem);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching music:', error);
+                });
+        }
+
+        function playMusic(url) {
+            audioPlayer.src = url;
             audioPlayer.play();
         }
-    });
+    }
 });
