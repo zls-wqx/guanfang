@@ -165,6 +165,25 @@ footer {
     outline: 2px solid #002d59;
     outline-offset: 2px;
 }
+.news-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.news-item {
+    background-color: #ffffff;
+    border: 1px solid #004080;
+    padding: 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.news-item:hover {
+    background-color: #e6f2ff;
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
 @media (max-width: 768px) {
     nav ul li {
