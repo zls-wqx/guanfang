@@ -22,17 +22,24 @@ nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    text-align: center;
 }
 
 nav ul li {
-    display: inline;
+    display: inline-block;
     margin: 0 1rem;
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
-    cursor: pointer;
+    font-weight: bold;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ffdb4d;
 }
 
 main {
@@ -48,16 +55,64 @@ section {
     margin-bottom: 2rem;
 }
 
+#commentForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+#commentForm input,
+#commentForm textarea {
+    padding: 0.5rem;
+    border: 2px solid #004080;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#commentForm input:focus,
+#commentForm textarea:focus {
+    border-color: #ffdb4d;
+    box-shadow: 0 0 8px rgba(255, 219, 77, 0.8);
+}
+
+#commentForm button {
+    align-self: flex-start;
+    background-color: #004080;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#commentForm button:hover {
+    background-color: #002d59;
+    transform: scale(1.05);
+}
+
 .comment-list {
     margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .comment-item {
     background-color: #ffffff;
-    border: 1px solid #004080;
-    padding: 0.5rem;
-    border-radius: 4px;
-    margin-bottom: 0.5rem;
+    border: 2px solid #004080;
+    padding: 0.75rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.comment-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 footer {
@@ -67,14 +122,9 @@ footer {
     padding: 1rem;
 }
 
-.music-list {
-    margin-top: 1rem;
-}
-
-.song-item {
-    background-color: #ffffff;
-    border: 1px solid #004080;
-    padding: 0.5rem;
-    border-radius: 4px;
-    margin-bottom: 0.5rem;
+@media (max-width: 768px) {
+    nav ul li {
+        display: block;
+        margin: 0.5rem 0;
+    }
 }
