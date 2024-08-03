@@ -1,26 +1,32 @@
-if (document.getElementById('commentList')) {
-        const nameInput = document.getElementById('nameInput');
-        const commentInput = document.getElementById('commentInput');
-        const submitComment = document.getElementById('submitComment');
-        const commentList = document.getElementById('commentList');
+const commentForm = document.getElementById('commentForm');
+    const nameInput = document.getElementById('nameInput');
+    const commentInput = document.getElementById('commentInput');
+    const commentList = document.getElementById('commentList');
 
-        submitComment.addEventListener('click', () => {
-            const name = nameInput.value.trim();
-            const comment = commentInput.value.trim();
-            if (name && comment) {
-                addComment(name, comment);
-                nameInput.value = '';
-                commentInput.value = '';
-            } else {
-                alert('请填写您的名字和评论');
-            }
-        });
-
-        function addComment(name, comment) {
+    function loadComments() {
+        const comments = JSON.parse(localStorage.getItem('comments')) || [];
+        commentList.innerHTML = '';
+        comments.forEach(comment => {
             const commentItem = document.createElement('div');
             commentItem.classList.add('comment-item');
-            commentItem.innerHTML = `<strong>${name}:</strong> ${comment}`;
+            commentItem.innerHTML = `<strong>${comment.name}</strong><p>${comment.text}</p>`;
             commentList.appendChild(commentItem);
-        }
+        });
     }
+
+    commentForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const name = nameInput.value.trim();
+        const text = commentInput.value.trim();
+        if (name && text) {
+            const comments = JSON.parse(localStorage.getItem('comments')) || [];
+            comments.push({ name, text });
+            localStorage.setItem('comments', JSON.stringify(comments));
+            nameInput.value = '';
+            commentInput.value = '';
+            loadComments();
+        }
+    });
+
+    loadComments();
 });
