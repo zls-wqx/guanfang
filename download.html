@@ -3,34 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>在线视频解析下载工具 - X-GORB官方网站</title>
+    <title>在线视频下载工具 - X-GORB官方网站</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>X-GORB 官方网站</h1>
+        <h1>X-GORB官方网站</h1>
         <nav>
             <ul>
                 <li><a href="index.html" id="homeLink">主页</a></li>
                 <li><a href="music.html" id="musicLink">音乐</a></li>
-                <li><a href="download.html" id="downloadLink">在线下载视频工具</a></li>
+                <li><a href="download.html" id="downloadLink">在线视频下载工具</a></li>
                 <li><a href="about.html" id="aboutLink">关于</a></li>
                 <li><a href="news.html" id="newsLink">新闻</a></li>
-                <li><a href="xgorb.html" id="xgorbLink">工作室新闻</a></li>
                 <li><a href="comments.html" id="commentsLink">评论区</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <section>
-            <div class="container">
-                <h2>下载Bilibili和抖音视频</h2>
-                <input type="text" id="videoUrl" placeholder="输入Bilibili或抖音视频链接" class="input-field">
-                <div class="controls">
-                    <button id="downloadButton" class="btn">下载视频</button>
-                </div>
-                <div id="message" class="message"></div>
-            </div>
+        <section class="download-tool">
+            <h2>在线下载工具</h2>
+            <p>请输入视频链接进行下载：</p>
+            <input type="text" id="downloadInput" placeholder="输入视频链接...">
+            <button id="downloadButton">下载</button>
         </section>
     </main>
     <footer>
