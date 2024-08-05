@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>去水印工具 - X-GORB官方网站</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <h1>X-GORB 官方网站</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html" id="homeLink">主页</a></li>
+                <li><a href="music.html" id="musicLink">音乐</a></li>
+                <li><a href="watermark.html" id="musicLink">去水印工具</a></li>
+                <li><a href="about.html" id="aboutLink">关于</a></li>
+                <li><a href="news.html" id="newsLink">新闻</a></li>
+                <li><a href="xgorb.html">工作室新闻</a></li>
+                <li><a href="comments.html">评论区</a></li>
+            </ul>
+        </nav>
+    </header>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+        }
+        canvas {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+        }
+        .controls {
+            margin-top: 20px;
+        }
+        .btn {
+            background-color: #004080;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #002d59;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>去水印工具</h1>
+        <input type="file" id="upload" accept="image/*" class="btn">
+        <canvas id="canvas" width="800" height="600"></canvas>
+        <div class="controls">
+            <button id="removeWatermark" class="btn">去除水印</button>
+        </div>
+    </div>
+
+    <script src="watermark.js"></script>
+</body>
+</html>
